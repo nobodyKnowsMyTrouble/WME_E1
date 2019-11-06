@@ -1,0 +1,162 @@
+* {
+  @import "reset.css";
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto';font-size: 14px;line-height:145%
+}
+
+.page {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+
+.greybar{
+  background-image: linear-gradient(#d0d0d0, #efefef);
+  height: 80px;
+  width: 100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+}
+nav {
+  background-image: linear-gradient(#d0d0d0, #efefef);
+  height: 80px;
+  width: 100%;
+  position:fixed;
+  z-index:1;
+  top:0;
+  list-style-type: none;
+  overflow: hidden;
+}
+
+nav ul {
+  padding: 0;
+  margin: 0;
+  margin-left: 10px;
+  min-width: 618px;  /* 768px - 150px */
+  display: block;
+}
+/* #https://webmaster-glossar.de/3-css-moeglichkeiten-bilder-per-hover-wechseln.html#bildausschnitt-verschieben */
+.imgLogo{
+  display:flex;
+  width:150px;
+  height:80px;
+  background-image:url('images/world_data_logo_v1.png');
+  background-position:0 0;
+  margin-right: 18px;
+}
+.imgLogo:hover{
+  background-position:0 80px;
+}
+
+.nav_logo {
+  height: 80px;
+  float: left;
+  display: inline;
+}
+.nav_elem {
+  height: 80px;
+  width: 101px;  /*  6 * 81px = 486px --> 132px Rest --> margin je 11px */
+  border: 1px #cccccc;
+  border-style: solid;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  transition: background-color 0.5s;
+}
+
+.nav_elem:hover {
+  background-color: #cccccc;
+}
+.nav_elem a {
+  text-decoration: none;
+  color: #777777;
+}
+.nav_elem:hover a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.textfeld{
+  width: 100%;
+  height: auto;
+  column-count: 1;
+  margin: 10px;
+  margin-top: 100px;
+  border-top: : 3px #58FA58;
+  border-left: 3px #cccccc;
+  border-right: 3px #cccccc;
+  border-bottom: 3px #cccccc;
+  border-style: groove;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+    align-items: stretch;
+}
+.team {
+  text-align: right;
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 767px) {
+  body {
+    background-color: #F09A9D; /* Red */
+  }
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  body {
+    background-color: #F5CF8E; /* Yellow */
+  }
+  .textfeld{
+    column-count: 2;
+  }
+
+
+
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 1200px) {
+  body {
+    background-color: #B2D6FF; /* Blue */
+  }
+  .foot,
+  .content,
+  .navigation {
+    width: 1170px;
+    margin: 0 auto;
+  }
+  .feature-1,
+  .feature-2,
+  .feature-3 {
+    width: 33.3%;
+  }
+  .textfeld{
+    column-count: 3;
+  }
+
+}

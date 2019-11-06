@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta name="title" content="Responsive Design">
+    <meta name="description" content="Unsere erste Seite">
+    <meta name="author" content="TEAM 33">
+    <meta name="keywords" content="Versuch1,world,data">
+    <meta name="robots" content="nofollow">
+    <meta charset='UTF-8'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Responsive Design</title>
+<!--    <description>Unsere erste Seite</description>
+    <author>TEAM 33</author>
+    <keywords>Versuch1,world,data</keywords>
+-->    <script src="https://kit.fontawesome.com/9791a01d41.js" crossorigin="anonymous"></script>
+    <link rel='stylesheet' href='https://fonts.google.com/specimen/Roboto'>
+    <link rel='stylesheet' href='styles.css'/>
+    <link rel='stylesheet' href='w3.css'/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class='page'>
+      <div class="greybar">
+      </div>
+      <div class="navigation">
+        <nav class="clearfix">
+          <ul class="clearfix">
+            <li class="nav_logo"><a class="imgLogo" href=""></a></li>
+            <li class="nav_elem"><a href="#"><i class="fas fa-list"></i> A1 - Table</a></li>
+            <li class="nav_elem"><a href="#"><i class="fas fa-list"></i> A2 - Parse</a></li>
+            <li class="nav_elem"><a href="#"><i class="fas fa-list"></i> A2 - Save </a></li>
+            <li class="nav_elem"><a href="#"><i class="fas fa-list"></i> A2 - Print</a></li>
+            <li class="nav_elem"><a href="#"><i class="fas fa-list"></i> A3 - REST </a></li>
+            <li class="nav_elem"><a href="#"><i class="fas fa-list"></i> A4 - Vis  </a></li>
+          </ul>
+          <a href="#" id="pull">Menu</a>
+        </nav>
+      </div>
+      <div class='content'>
+          <div class="textfeld">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer
+          </div>
+
+        <button type="button" name="load_data" id="load_data" class="btn btn-info">load data</button>
+        <div id="table_place_holder">
+
+        </div>
+        <script>
+        $(document).ready(function(){
+          $('#load_data').click(function(){
+            $.ajax({
+              url:"world_data_v1.csv",
+              dataType:"text",
+              success:function(data)
+              {
+                var allRows = data.split(/\r?\n|\r/);
+                var table = '<table>';
+                for (var singleRow = 0; singleRow < allRows.length; singleRow++) {
+                  if (singleRow === 0) {
+                    table += '<thead>';
+                  }
+                  table += '<tr>';
+                  var rowCells = allRows[singleRow].split(',');
+                  for (var rowCell = 0; rowCell < rowCells.length; rowCell++) {
+                    if (singleRow === 0) {
+                      table += '<th>';
+                      table += rowCells[rowCell];
+                      table += '</th>';
+                    } else {
+                      table += '<td>';
+                      table += rowCells[rowCell];
+                      table += '</td>';
+                    }
+                  }
+                  table += '</tr>';
+                  if (singleRow === 0) {
+                    table += '</thead>';
+                    table += '<tbody>';
+                  }
+                }
+                table += '</tbody>';
+                table += '</table>';
+                $('#table_place_holder').html(table);
+              }
+            });
+          });
+        });
+        </script>
+<!--        <a class="keineAhnung" href="javascript:void(0)" onclick="successFunction()" title="Table_blabla"></a>
+-->
+        <img src='images/content.svg'/>
+      </div>
+
+
+    </div>
+    <div class='foot'>
+      <div class='Copyright'>
+        <p>Coyright (c) 2018 world_data
+        <p>first course exercise HTML, CSS and JS of the lecture Web and Multimedia Engineering.
+      </div>
+      <div class='team'>
+        <p>This solution has been created by:
+        <p>Team 33
+      </div>
+    </div>
+
+  <script>
+  // Used to toggle the menu on small screens when clicking on the menu button
+  function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") ==note -1) {
+      x.className += " w3-show";
+    } else {
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
+  </script>
+</body>
+</html>

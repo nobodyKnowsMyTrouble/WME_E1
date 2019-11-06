@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta name="title" content="Responsive Design">
+    <meta name="description" content="Unsere erste Seite">
+    <meta name="author" content="TEAM 1234">
+    <meta name="keywords" content="Versuch1,world,data">
+    <meta name="robots" content="nofollow">
+    <meta charset='UTF-8'/>
+    <title>Responsive Design</title>
+<!--    <description>Unsere erste Seite</description>
+    <author>TEAM 1234</author>
+    <keywords>Versuch1,world,data</keywords>
+-->    <script src="https://kit.fontawesome.com/9791a01d41.js" crossorigin="anonymous"></script>
+    <link rel='stylesheet' href='https://fonts.google.com/specimen/Roboto'>
+    <link rel='stylesheet' href='styles.css'/>
+    <link rel='stylesheet' href='w3.css'/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  </head>
+  <body>
+
+    <!-- Navbar -->
+    <div class="w3-top">
+      <div class="w3-bar w3-card">
+        <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-list"></i></a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hide-small"><i class="fas fa-list"></i> A1 - Table</a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hide-small"><i class="fas fa-list"></i> A2 - Parse</a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hide-small"><i class="fas fa-list"></i> A2 - Save</a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hide-small"><i class="fas fa-list"></i> A2 - Print</a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hide-small"><i class="fas fa-list"></i> A3 - REST</a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hide-small"><i class="fas fa-list"></i> A4 - Vis</a>
+<!--        <div class="w3-dropdown-hover w3-hide-small">
+          <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>
+          <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="#" class="w3-bar-item w3-button"><i class="fas fa-list"></i> A1 - Table</a>
+            <a href="#" class="w3-bar-item w3-button"><i class="fas fa-list"></i> A2 - Parse</a>
+            <a href="#" class="w3-bar-item w3-button"><i class="fas fa-list"></i> A2 - Save</a>
+            <a href="#" class="w3-bar-item w3-button"><i class="fas fa-list"></i> A2 - Print</a>
+            <a href="#" class="w3-bar-item w3-button"><i class="fas fa-list"></i> A3 - REST</a>
+            <a href="#" class="w3-bar-item w3-button"><i class="fas fa-list"></i> A4 - Vis</a>
+          </div>
+        </div>
+-->      </div>
+    </div>
+
+    <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+      <a href="#" class="w3-bar-item w3-button w3-padding-large"><i class="fas fa-list"></i> A1 - Table</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large"><i class="fas fa-list"></i> A2 - Parse</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large"><i class="fas fa-list"></i> A2 - Save</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large"><i class="fas fa-list"></i> A2 - Print</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large"><i class="fas fa-list"></i> A3 - REST</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large"><i class="fas fa-list"></i> A4 - Vis</a>
+    </div>
+
+
+    <div class='page'>
+      <div class='section menu'>
+      <!-- #https://webmaster-glossar.de/3-css-moeglichkeiten-bilder-per-hover-wechseln.html#bildausschnitt-verschieben -->
+        <a class="imgLogo" href=""></a>
+        <ul>
+<!--          <li><a href="neu.html"><i class="fas fa-list"></i> A1 - Table</a></li>
+          <li><a href="neu.html"><i class="fas fa-list"></i> A2 - Parse</a></li>
+          <li><a href="neu.html"><i class="fas fa-list"></i> A2 - Save</a></li>
+          <li><a href="neu.html"><i class="fas fa-list"></i> A2 - Print</a></li>
+          <li><a href="neu.html"><i class="fas fa-list"></i> A3 - REST</a></li>
+          <li><a href="neu.html"><i class="fas fa-list"></i> A4 - Vis</a></li>
+-->        </ul>
+      </div>
+      <div class='section header'>
+      </div>
+      <div class='section content'>
+        <button type="button" name="load_data" id="load_data" class="btn btn-info">load data</button>
+        <table id="table_place_holder">
+
+        </table>
+        <script>
+        $(document).ready(function(){
+          $('#load_data').click(function(){
+            $.ajax({
+              url:"testdata.csv",
+              dataType:"text",
+              success:function(data)
+              {
+                var allRows = data.split(/\r?\n|\r/);
+                var table = '';
+                for (var singleRow = 0; singleRow < allRows.length; singleRow++) {
+                  if (singleRow === 0) {
+                    table += '<thead>';
+                  }
+                  table += '<tr>';
+                  var rowCells = allRows[singleRow].split(',');
+                  for (var rowCell = 0; rowCell < rowCells.length; rowCell++) {
+                    if (singleRow === 0) {
+                      table += '<th>';
+                      table += rowCells[rowCell];
+                      table += '</th>';
+                    } else {
+                      table += '<td>';
+                      table += rowCells[rowCell];
+                      table += '</td>';
+                    }
+                  }
+                  table += '</tr>';
+                  if (singleRow === 0) {
+                    table += '</thead>';
+                    table += '<tbody>';
+                  }
+                }
+                table += '</tbody>';
+                document.getElementById('table_place_holder').append(table);
+              }
+            });
+          });
+        });
+        </script>
+<!--        <a class="keineAhnung" href="javascript:void(0)" onclick="successFunction()" title="Table_blabla"></a>
+-->
+        <img src='images/content.svg'/>
+      </div>
+
+      <div class='section sign-up'>
+        <img src='images/sign-up.svg'/>
+      </div>
+      <div class='section feature-1'>
+        <div id='testID'>
+        </div>
+        <img src='images/feature.svg'/>
+      </div>
+      <div class='section feature-2'>
+        <img src='images/feature.svg'/>
+      </div>
+      <div class='section feature-3'>
+        <img src='images/feature.svg'/>
+      </div>
+    </div>
+
+    <div class='foot'>
+
+      <div class='Copyright'>
+        <p>Coyright (c) 2018 world_data
+        <p>first course exercise HTML, CSS and JS of the lecture Web and Multimedia Engineering.
+      </div>
+      <div class='team'>
+        <p>This solution has been created by:
+        <p>Team 1234
+      </div>
+    </div>
+
+  <script>
+  // Used to toggle the menu on small screens when clicking on the menu button
+  function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") ==note -1) {
+      x.className += " w3-show";
+    } else {
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
+  </script>
+</body>
+</html>
