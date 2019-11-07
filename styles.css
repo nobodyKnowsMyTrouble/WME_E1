@@ -90,6 +90,10 @@ nav ul {
   color: #000000;
 }
 
+nav a#pull{
+  display: none;
+}
+
 .content {
   display: flex;
   flex-wrap: wrap;
@@ -101,24 +105,33 @@ nav ul {
   column-count: 1;
   margin: 10px;
   margin-top: 100px;
-  border-top: : 3px #58FA58;
+  border-top: : 30px #58FA58;
   border-left: 3px #cccccc;
   border-right: 3px #cccccc;
   border-bottom: 3px #cccccc;
-  border-style: groove;
+  border-style: solid;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  padding: 10px;
 }
 
-.foot {
-  display: flex;
-  flex-wrap: wrap;
-    align-items: stretch;
-}
-.team {
-  text-align: right;
-}
 
+
+
+
+footer {
+  position:fixed;
+  z-index:1;
+  bottom:0;
+  list-style-type: none;
+  overflow: hidden;
+}
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
+}
 /* Mobile Styles */
 @media only screen and (max-width: 767px) {
   body {
