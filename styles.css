@@ -32,7 +32,6 @@
   top:0;
 }
 nav {
-  background-image: linear-gradient(#d0d0d0, #efefef);
   height: 80px;
   width: 100%;
   position:fixed;
@@ -97,14 +96,27 @@ nav a#pull{
 .content {
   display: flex;
   flex-wrap: wrap;
-}
 
+}
+.headline{
+  margin-top: 100px;
+}
+.headline h1{
+  font-size: 30px;
+}
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
 .textfeld{
   width: 100%;
   height: auto;
   column-count: 1;
   margin: 10px;
-  margin-top: 100px;
   border-top: : 30px #58FA58;
   border-left: 3px #cccccc;
   border-right: 3px #cccccc;
@@ -113,6 +125,7 @@ nav a#pull{
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   padding: 10px;
+  box-shadow: 2px 2px 2px #cccccc;
 }
 
 
