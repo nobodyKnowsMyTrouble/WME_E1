@@ -5,24 +5,10 @@
   box-sizing: border-box;
   font-family: 'Roboto';font-size: 14px;line-height:145%
 }
-
 .page {
   display: flex;
   flex-wrap: wrap;
 }
-
-.clearfix:before,
-.clearfix:after {
-    content: " ";
-    display: table;
-}
-.clearfix:after {
-    clear: both;
-}
-.clearfix {
-    *zoom: 1;
-}
-
 .greybar{
   background-image: linear-gradient(#d0d0d0, #efefef);
   height: 80px;
@@ -31,67 +17,63 @@
   z-index:1;
   top:0;
 }
-nav {
-  height: 80px;
+.navigation{
   width: 100%;
-  position:fixed;
-  z-index:1;
-  top:0;
-  list-style-type: none;
-  overflow: hidden;
 }
-
-nav ul {
-  padding: 0;
-  margin: 0;
-  margin-left: 10px;
-  min-width: 618px;  /* 768px - 150px */
-  display: block;
-}
-/* #https://webmaster-glossar.de/3-css-moeglichkeiten-bilder-per-hover-wechseln.html#bildausschnitt-verschieben */
-.imgLogo{
+#worldLogo{
   display:flex;
   width:150px;
   height:80px;
   background-image:url('images/world_data_logo_v1.png');
   background-position:0 0;
+  margin-left: 18px;
   margin-right: 18px;
+  border-style: none;
 }
-.imgLogo:hover{
+#worldLogo:hover{
   background-position:0 80px;
+  background-color: inherit;
+}
+.topnav {
+  top:0;
+  position: fixed;
+  overflow: hidden;
+  /*height: 80px;*/
+  width: 100%;
+  z-index:1;
+}
+/* Style the links inside the navigation bar */
+.topnav a {
+ float: left;
+ display: block;
+ color: #575757;
+ text-align: center;
+ padding: 30px 0px;
+ text-decoration: none;
+ font-size: 14px;
+ width: 100px;
+ border: 1px #cccccc;
+ border-style: solid;
+ transition: background-color 1s;
 }
 
-.nav_logo {
-  height: 80px;
-  float: left;
-  display: inline;
-}
-.nav_elem {
-  height: 80px;
-  width: 101px;  /*  6 * 81px = 486px --> 132px Rest --> margin je 11px */
-  border: 1px #cccccc;
-  border-style: solid;
-  text-align: center;
-  display: table-cell;
-  vertical-align: middle;
-  transition: background-color 0.5s;
+/* Change the color of links on hover */
+.topnav a:hover {
+ color: black;
+ background-color: #cccccc;
 }
 
-.nav_elem:hover {
-  background-color: #cccccc;
-}
-.nav_elem a {
-  text-decoration: none;
-  color: #777777;
-}
-.nav_elem:hover a {
-  text-decoration: none;
-  color: #000000;
+/* Add an active class to highlight the current page */
+.topnav a.active {
+ background-color: #4CAF50;
+ color: white;
 }
 
-nav a#pull{
-  display: none;
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+ display: none;
 }
+
 
 .content {
   display: flex;
@@ -150,6 +132,28 @@ footer {
   body {
     background-color: #F09A9D; /* Red */
   }
+/*.topnav a:not(:first-child) {display: none;}*/
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .topnav.responsive {position: relative;}
+  .topnav.responsive #icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    width: 100px;
+    text-align: center;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    border-style: none;
+  }
 }
 
 /* Tablet Styles */
@@ -160,9 +164,6 @@ footer {
   .textfeld{
     column-count: 2;
   }
-
-
-
 }
 
 /* Desktop Styles */
@@ -172,17 +173,11 @@ footer {
   }
   .foot,
   .content,
-  .navigation {
+  .topnav {
     width: 1170px;
     margin: 0 auto;
-  }
-  .feature-1,
-  .feature-2,
-  .feature-3 {
-    width: 33.3%;
   }
   .textfeld{
     column-count: 3;
   }
-
 }
