@@ -16,116 +16,51 @@
     <link rel='stylesheet' href='https://fonts.google.com/specimen/Roboto'>
     <link rel='stylesheet' href='styles.css'/>
     <link rel='stylesheet' href='w3.css'/>
-    <!--  jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="sort.js" async></script>
+    <script src="nav.js" async></script>
+    <script src="hide.js" async></script>
   </head>
   <body>
     <div class='page'>
       <div class="greybar">
       </div>
-      <div class="navigation">
-        <nav>
-          <div class="topnav" id="myTopnav">
-            <ul>
-              <a class="imgLogo" id="worldLogo" href=""></a>
-              <a href="#"><i class="fas fa-list"></i> A1 - Table</a>
-              <a href="#"><i class="fas fa-list"></i> A2 - Parse</a>
-              <a href="#"><i class="fas fa-list"></i> A2 - Save </a>
-              <a href="#"><i class="fas fa-list"></i> A2 - Print</a>
-              <a href="#"><i class="fas fa-list"></i> A3 - REST </a>
-              <a href="#"><i class="fas fa-list"></i> A4 - Vis  </a>
-              <a href="javascript:void(0);" id="icon" class="icon" onclick="navFunction()"><i class="fas fa-list"></i></a>
-            </ul>
-          </div>
-        </nav>
-      </div>
+      <nav class="topnav" id="myTopnav">
+        <a class="imgLogo" id="worldLogo" href=""></a>
+        <a href="#"><i class="fas fa-list"></i> A1 - Table</a>
+        <a href="#"><i class="fas fa-list"></i> A2 - Parse</a>
+        <a href="#"><i class="fas fa-list"></i> A2 - Save </a>
+        <a href="#"><i class="fas fa-list"></i> A2 - Print</a>
+        <a href="#"><i class="fas fa-list"></i> A3 - REST </a>
+        <a href="#"><i class="fas fa-list"></i> A4 - Vis  </a>
+        <a href="javascript:void(0);" id="icon" class="icon" onclick="navFunction()"><i class="fas fa-list"></i></a>
+      </nav>
       <div class='content'>
         <div class="headline">
           <h1>World Data Overview ... </h1>
         </div>
-        <hr></hr>
+        <hr/>
         <div class="textfeld">
            Mavericks reality distortion gradients attenuation. Thought through and through notifications transparency game center multitasking aluminum advanced desktop operating system genius bar. This changes everything designed by Apple in California passbook. Control center photos all-new design SDK technology clock. Simplicity is actually quite complicated. Functional layers 9:41am partly cloudy minimalism. Dock airdrop slide to answer music. Video multitouch iTunes compass. Harmonious finder grid system retina animation compressor experience keynote. Redesign services API notes system preferences. Features siri flat buttons airplane mode calculator. Missed call cover flow compare models. Wi-Fi apple care volume reminder controls. My stations folders mac power ultimate upgrade. Shop online quicktime trackpad server aperture rumors education safari one to one. Remote desktop motion business. Backlit keyboard chess phone airport extreme support iPad. Accessories magsafe terminal final cut pro. Featured TV shows downloads digital color meter. Glossy tech specs bluetooth manuals. OpenGL products FaceTime free shipping recycling mission control applications.
            from <a href="http://jonyipsum.com/">jony_ipsum</a>
         </div>
+        <div class="showhide" id="showhidetop"></div>
+        <div id="table_place_holder"></div>
+        <div class="showhide" id="showhidebottom"></div>
+      </div> <!-- class content -->
+    </div> <!-- class page -->
 
-        <button type="button" name="load_data" id="load_data" class="btn btn-info">load data</button>
-        <div id="table_place_holder">
-
-        </div>
-        <script>
-        $(document).ready(function(){
-          $('#load_data').click(function(){
-            $.ajax({
-              url:"world_data_v1.csv",
-              dataType:"text",
-              success:function(data)
-              {
-                var allRows = data.split(/\r?\n|\r/);
-                var table = '<table>';
-                for (var singleRow = 0; singleRow < allRows.length; singleRow++) {
-                  if (singleRow === 0) {
-                    table += '<thead>';
-                  }
-                  table += '<tr>';
-                  var rowCells = allRows[singleRow].split(',');
-                  for (var rowCell = 0; rowCell < rowCells.length; rowCell++) {
-                    if (singleRow === 0) {
-                      table += '<th>';
-                      table += rowCells[rowCell];
-                      table += '</th>';
-                    } else {
-                      table += '<td>';
-                      table += rowCells[rowCell];
-                      table += '</td>';
-                    }
-                  }
-                  table += '</tr>';
-                  if (singleRow === 0) {
-                    table += '</thead>';
-                    table += '<tbody>';
-                  }
-                }
-                table += '</tbody>';
-                table += '</table>';
-                $('#table_place_holder').html(table);
-              }
-            });
-          });
-        });
-        </script>
-<!--        <a class="keineAhnung" href="javascript:void(0)" onclick="successFunction()" title="Table_blabla"></a>
--->
-      </div>
-
-
-    </div>
-
-
-  <script>
-    /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
-    function navFunction() {
-      var x = document.getElementById("myTopnav");
-      if (x.className === "topnav") {
-        x.className += " responsive";
-      } else {
-        x.className = "topnav";
-      }
-    }
-  </script>
-</body>
+<script src="table.js"></script>
 <footer>
   <div class='foot'>
-    <div class='Copyright'>
-      <p class='alignleft'>Coyright (c) 2018 world_data
-      <p class='alignright'>This solution has been created by:
-      <p class='alignleft'>first course exercise HTML, CSS and JS of the lecture Web and Multimedia Engineering.
-      <p class='alignright'>Team 33
+    <div class='Copyright alignleft'>
+      <p>Coyright © 2018 world_data
+      <p>first course exercise HTML, CSS and JS of the lecture Web and Multimedia Engineering.
     </div>
-    <div class='team'>
-
-
+    <div class='Team alignright'>
+      <p>This solution has been created by:
+      <p>Team 33
     </div>
   </div>
 </footer>
+</body>
 </html>
